@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b3b6l7wvj3qbu"]
+
+[ext_resource type="Texture2D" uid="uid://ci2mx1p5c2hs4" path="res://assets/Actor/Characters/NinjaDark/SpriteSheet.png" id="1_j31al"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_jxjcj"]
+
+[node name="Player" type="CharacterBody2D"]
+texture_filter = 1
+script = ExtResource("1_jxjcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(85, 44)
+texture = ExtResource("1_j31al")
+hframes = 4
+vframes = 7
