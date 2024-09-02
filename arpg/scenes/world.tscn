@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://bjoqbi78yj3de"]
+[gd_scene load_steps=13 format=3 uid="uid://bjoqbi78yj3de"]
 
+[ext_resource type="Script" path="res://scenes/world.gd" id="1_ayfvn"]
 [ext_resource type="PackedScene" uid="uid://b3b6l7wvj3qbu" path="res://scenes/player.tscn" id="1_kkn4c"]
 [ext_resource type="Texture2D" uid="uid://dfhv4ese1fqxo" path="res://assets/Backgrounds/Tilesets/TilesetFloor.png" id="2_qeo4h"]
 [ext_resource type="Texture2D" uid="uid://d2t1oc7eg0h0v" path="res://assets/Backgrounds/Tilesets/TilesetNature.png" id="3_kk7jp"]
 [ext_resource type="Texture2D" uid="uid://b5tggb1wekx22" path="res://assets/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="4_mmie7"]
 [ext_resource type="PackedScene" uid="uid://d1vemkscbl511" path="res://scenes/enemies/raccoon.tscn" id="5_k5uxi"]
+[ext_resource type="PackedScene" uid="uid://4pgic3pcumop" path="res://scenes/heart_container.tscn" id="6_p7vgu"]
+[ext_resource type="Script" path="res://scenes/follow_cam.gd" id="6_vp1g3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hd5ey"]
 texture = ExtResource("2_qeo4h")
@@ -963,7 +966,8 @@ texture = ExtResource("4_mmie7")
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-5.5559, -4.86142, 5.65512, -4.7622, 8, 8, -8, 8)
 
 [sub_resource type="TileSet" id="TileSet_6borf"]
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 3
+physics_layer_0/collision_mask = 3
 terrain_set_0/mode = 1
 terrain_set_0/terrain_0/name = "Dark Sand"
 terrain_set_0/terrain_0/color = Color(0.33813, 0.396397, 0.792366, 1)
@@ -975,6 +979,7 @@ sources/4 = SubResource("TileSetAtlasSource_6l5gk")
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_ayfvn")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -990,11 +995,21 @@ layer_2/y_sort_enabled = true
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(65547, 1, 0, 196619, 1, 0, 327691, 1, 0, 458763, 1, 0)
 
-[node name="Player" parent="." instance=ExtResource("1_kkn4c")]
-
-[node name="raccoon" parent="." node_paths=PackedStringArray("endPoint") instance=ExtResource("5_k5uxi")]
+[node name="raccoon" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("5_k5uxi")]
 position = Vector2(123, 29)
 endPoint = NodePath("Marker2D")
 
-[node name="Marker2D" type="Marker2D" parent="raccoon"]
+[node name="Marker2D" type="Marker2D" parent="TileMap/raccoon"]
 position = Vector2(-28, 48)
+
+[node name="Player" parent="." instance=ExtResource("1_kkn4c")]
+
+[node name="followCam" type="Camera2D" parent="Player" node_paths=PackedStringArray("tilemap")]
+script = ExtResource("6_vp1g3")
+tilemap = NodePath("../../TileMap")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="heartContainer" parent="CanvasLayer" instance=ExtResource("6_p7vgu")]
+layout_direction = 2
+metadata/_edit_use_anchors_ = true

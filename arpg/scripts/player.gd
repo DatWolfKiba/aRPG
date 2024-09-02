@@ -1,7 +1,13 @@
 extends CharacterBody2D
 
+class_name Player 
+
+signal healthChanged 
+
 @export var speed: int = 35
 @onready var animations: AnimationPlayer = $AnimationPlayer
+@export var maxHealth = 3
+@onready var currentHealth: int = maxHealth
 
 func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -19,9 +25,16 @@ func updateAnimation():
 	
 		animations.play("walk" + direction)
 	
-	
+func handleCollisions():
+	pass
+
 func _physics_process(delta):
 	handleInput()
 	move_and_slide()
+	handleCollisions()
 	updateAnimation()
 		
+func _on_hurt_box_area_entered(area):
+	if area.name == "hitBox":
+		currentHealth -= 1
+		healthChanged.emit(currentHealth)

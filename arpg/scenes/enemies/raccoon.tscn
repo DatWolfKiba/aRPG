@@ -1,6 +1,6 @@
-[gd_scene load_steps=19 format=3 uid="uid://d1vemkscbl511"]
+[gd_scene load_steps=21 format=3 uid="uid://d1vemkscbl511"]
 
-[ext_resource type="Script" path="res://scenes/enemies/raccoon.gd" id="1_56a3j"]
+[ext_resource type="Script" path="res://scripts/raccoon.gd" id="1_56a3j"]
 [ext_resource type="Texture2D" uid="uid://cxcwmjrggynbk" path="res://assets/Actor/Monsters/Racoon/SpriteSheet.png" id="1_tgj8k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bt4gi"]
@@ -134,10 +134,32 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cwkj5"]
+size = Vector2(15, 10)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j3yuw"]
+size = Vector2(15, 10)
+
 [node name="raccoon" type="CharacterBody2D"]
+z_index = 1
+collision_layer = 2
+collision_mask = 2
 script = ExtResource("1_56a3j")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -7)
 sprite_frames = SubResource("SpriteFrames_x0n0b")
 animation = &"walkDown"
+frame = 1
+frame_progress = 0.915089
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_cwkj5")
+
+[node name="hitBox" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="hitBox"]
+position = Vector2(0.5, -4)
+shape = SubResource("RectangleShape2D_j3yuw")
