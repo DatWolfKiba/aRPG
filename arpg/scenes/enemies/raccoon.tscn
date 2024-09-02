@@ -1,0 +1,143 @@
+[gd_scene load_steps=19 format=3 uid="uid://d1vemkscbl511"]
+
+[ext_resource type="Script" path="res://scenes/enemies/raccoon.gd" id="1_56a3j"]
+[ext_resource type="Texture2D" uid="uid://cxcwmjrggynbk" path="res://assets/Actor/Monsters/Racoon/SpriteSheet.png" id="1_tgj8k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt4gi"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fhs3c"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_buppm"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ekhx8"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(32, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8234j"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(32, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uusvl"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(32, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n6o6x"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(32, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bsjpi"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(48, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usddd"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(48, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twmqn"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(48, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eirw4"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6hpf4"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(16, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnoqc"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(16, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tenlg"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(16, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sb1rp"]
+atlas = ExtResource("1_tgj8k")
+region = Rect2(16, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_x0n0b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt4gi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhs3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_buppm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fhs3c")
+}],
+"loop": true,
+"name": &"walkDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ekhx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8234j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uusvl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n6o6x")
+}],
+"loop": true,
+"name": &"walkLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bsjpi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usddd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twmqn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eirw4")
+}],
+"loop": true,
+"name": &"walkRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6hpf4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnoqc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tenlg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sb1rp")
+}],
+"loop": true,
+"name": &"walkUp",
+"speed": 5.0
+}]
+
+[node name="raccoon" type="CharacterBody2D"]
+script = ExtResource("1_56a3j")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -7)
+sprite_frames = SubResource("SpriteFrames_x0n0b")
+animation = &"walkDown"
