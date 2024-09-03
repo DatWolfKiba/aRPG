@@ -8,8 +8,13 @@ signal healthChanged
 @onready var animations: AnimationPlayer = $AnimationPlayer
 @export var maxHealth = 3
 @onready var currentHealth: int = maxHealth
-@export var knockbackPower: int = 500  
+@export var knockbackPower: int = 500 
+@onready var effects = $Effects
+@onready var hurtTimer: Timer = $hurtTimer
 
+func _ready():
+	effects.play("RESET")
+	
 func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
 	velocity = moveDirection * speed
@@ -38,8 +43,15 @@ func _physics_process(delta):
 func _on_hurt_box_area_entered(area):
 	if area.name == "hitBox":
 		currentHealth -= 1
+		if currentHealth == 0:
+			currentHealth = maxHealth
 		healthChanged.emit(currentHealth)
 		knockback(area.get_parent().velocity)
+		effects.play("hurtBlink")
+		hurtTimer.start()
+		await hurtTimer.timeout
+		effects.play("RESET")
+
 		
 func knockback(enemyVelocity: Vector2):
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
