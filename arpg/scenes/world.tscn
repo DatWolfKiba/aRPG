@@ -1,13 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://bjoqbi78yj3de"]
+[gd_scene load_steps=16 format=3 uid="uid://bjoqbi78yj3de"]
 
-[ext_resource type="Script" path="res://scenes/world.gd" id="1_ayfvn"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="1_ayfvn"]
 [ext_resource type="PackedScene" uid="uid://b3b6l7wvj3qbu" path="res://scenes/player.tscn" id="1_kkn4c"]
 [ext_resource type="Texture2D" uid="uid://dfhv4ese1fqxo" path="res://assets/Backgrounds/Tilesets/TilesetFloor.png" id="2_qeo4h"]
 [ext_resource type="Texture2D" uid="uid://d2t1oc7eg0h0v" path="res://assets/Backgrounds/Tilesets/TilesetNature.png" id="3_kk7jp"]
+[ext_resource type="PackedScene" uid="uid://0veoy2kygnvg" path="res://scenes/lifepot.tscn" id="4_2uof0"]
 [ext_resource type="Texture2D" uid="uid://b5tggb1wekx22" path="res://assets/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="4_mmie7"]
+[ext_resource type="PackedScene" uid="uid://bahfdaluh36jk" path="res://scenes/stick.tscn" id="5_4sluo"]
 [ext_resource type="PackedScene" uid="uid://d1vemkscbl511" path="res://scenes/enemies/raccoon.tscn" id="5_k5uxi"]
 [ext_resource type="PackedScene" uid="uid://4pgic3pcumop" path="res://scenes/heart_container.tscn" id="6_p7vgu"]
-[ext_resource type="Script" path="res://scenes/follow_cam.gd" id="6_vp1g3"]
+[ext_resource type="Script" path="res://scripts/follow_cam.gd" id="6_vp1g3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hd5ey"]
 texture = ExtResource("2_qeo4h")
@@ -956,6 +958,11 @@ texture = ExtResource("3_kk7jp")
 10:20/0 = 0
 11:20/0 = 0
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_4al1b"]
+resource_name = "Collectables"
+scenes/5/scene = ExtResource("4_2uof0")
+scenes/7/scene = ExtResource("5_4sluo")
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6l5gk"]
 texture = ExtResource("4_mmie7")
 0:0/animation_frame_0/duration = 0.4
@@ -976,6 +983,7 @@ terrain_set_0/terrain_1/color = Color(0.968627, 0.435294, 0.447059, 1)
 sources/0 = SubResource("TileSetAtlasSource_hd5ey")
 sources/1 = SubResource("TileSetAtlasSource_12x7n")
 sources/4 = SubResource("TileSetAtlasSource_6l5gk")
+sources/2 = SubResource("TileSetScenesCollectionSource_4al1b")
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
@@ -994,6 +1002,8 @@ layer_2/name = "tree"
 layer_2/y_sort_enabled = true
 layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(65547, 1, 0, 196619, 1, 0, 327691, 1, 0, 458763, 1, 0)
+layer_3/name = "collectables"
+layer_3/tile_data = PackedInt32Array(458759, 2, 327680, 458758, 2, 327680, 524294, 2, 327680, 524295, 2, 327680, 327685, 2, 458752)
 
 [node name="raccoon" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("5_k5uxi")]
 position = Vector2(123, 29)
