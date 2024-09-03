@@ -1011,5 +1011,4 @@ tilemap = NodePath("../../TileMap")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="heartContainer" parent="CanvasLayer" instance=ExtResource("6_p7vgu")]
-layout_direction = 2
 metadata/_edit_use_anchors_ = true
