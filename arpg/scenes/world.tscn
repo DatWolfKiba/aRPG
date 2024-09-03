@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bjoqbi78yj3de"]
+[gd_scene load_steps=19 format=3 uid="uid://bjoqbi78yj3de"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_ayfvn"]
 [ext_resource type="PackedScene" uid="uid://b3b6l7wvj3qbu" path="res://scenes/player.tscn" id="1_kkn4c"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d1vemkscbl511" path="res://scenes/enemies/raccoon.tscn" id="5_k5uxi"]
 [ext_resource type="PackedScene" uid="uid://4pgic3pcumop" path="res://scenes/heart_container.tscn" id="6_p7vgu"]
 [ext_resource type="Script" path="res://scripts/follow_cam.gd" id="6_vp1g3"]
+[ext_resource type="Resource" uid="uid://dcbihyimpqo8u" path="res://resources/playerInventory.tres" id="9_1iyic"]
 [ext_resource type="Script" path="res://scenes/canvas_layer.gd" id="10_njjn1"]
 [ext_resource type="PackedScene" uid="uid://ca5818atcrj7w" path="res://scenes/inventory_gui.tscn" id="11_7hiv5"]
 
@@ -1015,6 +1016,7 @@ endPoint = NodePath("Marker2D")
 position = Vector2(-28, 48)
 
 [node name="Player" parent="." instance=ExtResource("1_kkn4c")]
+inventory = ExtResource("9_1iyic")
 
 [node name="followCam" type="Camera2D" parent="Player" node_paths=PackedStringArray("tilemap")]
 script = ExtResource("6_vp1g3")

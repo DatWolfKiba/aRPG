@@ -4,7 +4,18 @@ signal opened
 signal closed
 
 var isOpen: bool = false 
-# Called when the node enters the scene tree for the first time.
+
+@onready var inventory: Inventory = preload("res://resources/playerInventory.tres")
+@onready var slots: Array = $NinePatchRect/GridContainer.get_children() 
+
+func _ready():
+	update()
+	
+func update():
+	for i in range(min(inventory.items.size(), slots.size())):
+		slots[i].update(inventory.items[i])
+	
+
 func open():
 	visible = true
 	isOpen = true

@@ -14,6 +14,8 @@ signal healthChanged
 @onready var hurtTimer: Timer = $hurtTimer
 @onready var hurtBox = $hurtBox
 
+@export var inventory: Inventory
+
 var isHurt: bool = false
 
 
