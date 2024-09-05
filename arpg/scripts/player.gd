@@ -27,6 +27,7 @@ var isAttacking: bool = false
 
 func _ready():
 	effects.play("RESET")
+	weapon.visible = false 
 	
 func handleInput():
 	var moveDirection = Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
@@ -47,6 +48,7 @@ func attack():
 
 func updateAnimation():
 	if isAttacking: return
+	
 	if velocity.length() == 0:
 		if animations.is_playing():
 			animations.stop()
