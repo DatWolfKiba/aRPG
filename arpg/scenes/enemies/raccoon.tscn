@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://d1vemkscbl511"]
+[gd_scene load_steps=14 format=3 uid="uid://d1vemkscbl511"]
 
 [ext_resource type="Script" path="res://scripts/raccoon.gd" id="1_56a3j"]
 [ext_resource type="Texture2D" uid="uid://cxcwmjrggynbk" path="res://assets/Actor/Monsters/Racoon/SpriteSheet.png" id="1_tgj8k"]
+[ext_resource type="Texture2D" uid="uid://cop6g8mnj1id7" path="res://assets/FX/Smoke/Smoke/SpriteSheet.png" id="3_1786l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cwkj5"]
 size = Vector2(15, 10)
@@ -22,6 +23,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("deathEffect:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("deathEffect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_08eb8"]
@@ -92,9 +129,50 @@ tracks/0/keys = {
 "values": [1, 5, 9, 13]
 }
 
+[sub_resource type="Animation" id="Animation_pt7d4"]
+resource_name = "death"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("deathEffect:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("deathEffect:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t51ps"]
 _data = {
 "RESET": SubResource("Animation_udcjc"),
+"death": SubResource("Animation_pt7d4"),
 "walkDown": SubResource("Animation_08eb8"),
 "walkLeft": SubResource("Animation_j4pmw"),
 "walkRight": SubResource("Animation_nsnxx"),
@@ -111,7 +189,6 @@ collision_mask = 2
 script = ExtResource("1_56a3j")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0.5, -4)
 shape = SubResource("RectangleShape2D_cwkj5")
 
@@ -141,5 +218,11 @@ collision_mask = 4
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hurtBox"]
 position = Vector2(0.5, -4)
 shape = SubResource("RectangleShape2D_5m7ri")
+
+[node name="deathEffect" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -10)
+texture = ExtResource("3_1786l")
+hframes = 6
 
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]

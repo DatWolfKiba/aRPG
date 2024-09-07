@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://ggxnrkjlsgxa"]
+[gd_scene load_steps=4 format=3 uid="uid://ggxnrkjlsgxa"]
 
 [ext_resource type="Texture2D" uid="uid://dge6yadx8u807" path="res://assets/Items/Weapons/BigSword/Sprite.png" id="1_tbx3u"]
+[ext_resource type="Script" path="res://scenes/big_sword.gd" id="1_w451y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ry43"]
 size = Vector2(4, 9)
@@ -8,6 +9,7 @@ size = Vector2(4, 9)
 [node name="bigSword" type="Area2D"]
 collision_layer = 4
 collision_mask = 0
+script = ExtResource("1_w451y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -6)
