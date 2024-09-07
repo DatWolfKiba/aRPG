@@ -47,6 +47,7 @@ func _physics_process(delta):
 
 func _on_hurt_box_area_entered(area: Area2D) -> void:
 	if area == $hitBox: return 
+	$hitBox.set_deferred("monitorable", false) 
 	isDead = true
 	animations.play("death")
 	await animations.animation_finished
