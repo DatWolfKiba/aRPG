@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/slot.gd" id="1_iau0c"]
 [ext_resource type="FontFile" uid="uid://cnliyptrf8nl0" path="res://assets/Ui/Font/NormalFont.ttf" id="3_y2vv7"]
 
-[node name="Slot" type="Panel"]
+[node name="Slot" type="Button"]
 self_modulate = Color(1, 1, 1, 0)
 custom_minimum_size = Vector2(20, 20)
 offset_right = 20.0

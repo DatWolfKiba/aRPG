@@ -1,4 +1,4 @@
-extends Panel
+extends Button
 
 
 @onready var backgroundSprite: Sprite2D = $background
