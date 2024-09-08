@@ -59,7 +59,18 @@ func onSlotClicked(slot):
 		
 	if !itemInHand:
 		takeItemFromSlot(slot)
+		return 
+		
+	swapItems(slot)
+
+func swapItems(slot):
+	var tempItem = slot.takeItem()
+	insertItemInSlot(slot)
 	
+	itemInHand = tempItem
+	add_child(itemInHand)
+	updateIteamInHand()
+
 func takeItemFromSlot(slot):
 	itemInHand = slot.takeItem()
 	add_child(itemInHand)
