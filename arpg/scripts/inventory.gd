@@ -7,6 +7,30 @@ signal updated
 @export var slots: Array[InventorySlot] 
 
 func insert(item: InventoryItem):
+	for slot in slots:
+
+		if slot.item == item && slot.amount < item.maxAmountPrStack:
+
+			slot.amount += 1
+
+			updated.emit()
+
+			return
+
+	
+
+	for i in range(slots.size()):
+
+		if !slots[i].item:
+
+			slots[i].item = item
+
+			slots[i].amount = 1
+
+			updated.emit()
+
+			return
+	
 	var itemSlots = slots.filter(func(slot): return slot.item == item)
 	if !itemSlots.is_empty():
 		itemSlots[0]. amount +=1

@@ -1042,5 +1042,41 @@ offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="lifepot" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(82, 136)
+
+[node name="lifepot2" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(81, 121)
+
+[node name="lifepot3" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(139, 120)
+
+[node name="lifepot4" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(138, 133)
+
+[node name="lifepot5" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(56, 137)
+
+[node name="lifepot6" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(68, 136)
+
+[node name="lifepot7" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(150, 124)
+
+[node name="lifepot8" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(216, 133)
+
+[node name="lifepot9" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(185, 137)
+
+[node name="lifepot11" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(233, 121)
+
+[node name="lifepot10" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(165, 136)
+
+[node name="lifepot12" parent="." instance=ExtResource("4_2uof0")]
+position = Vector2(230, 105)
+
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_opened"]
