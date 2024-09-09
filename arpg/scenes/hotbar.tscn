@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://nnmg3dvq6uql"]
+
+[ext_resource type="Script" path="res://scenes/hotbar.gd" id="1_e017k"]
+[ext_resource type="PackedScene" uid="uid://slhx7x57rgnj" path="res://scenes/hotbar_slot.tscn" id="2_l01rc"]
+
+[node name="Hotbar" type="HBoxContainer"]
+offset_right = 140.0
+offset_bottom = 23.0
+script = ExtResource("1_e017k")
+
+[node name="HotbarSlot" parent="." instance=ExtResource("2_l01rc")]
+layout_mode = 2
+
+[node name="HotbarSlot2" parent="." instance=ExtResource("2_l01rc")]
+layout_mode = 2
+
+[node name="HotbarSlot3" parent="." instance=ExtResource("2_l01rc")]
+layout_mode = 2
+
+[node name="HotbarSlot4" parent="." instance=ExtResource("2_l01rc")]
+layout_mode = 2
+
+[node name="HotbarSlot5" parent="." instance=ExtResource("2_l01rc")]
+layout_mode = 2
+
+[node name="HotbarSlot6" parent="." instance=ExtResource("2_l01rc")]
+layout_mode = 2

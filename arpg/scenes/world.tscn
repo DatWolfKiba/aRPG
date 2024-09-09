@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bjoqbi78yj3de"]
+[gd_scene load_steps=20 format=3 uid="uid://bjoqbi78yj3de"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_ayfvn"]
 [ext_resource type="PackedScene" uid="uid://b3b6l7wvj3qbu" path="res://scenes/player.tscn" id="1_kkn4c"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://dcbihyimpqo8u" path="res://resources/playerInventory.tres" id="9_1iyic"]
 [ext_resource type="Script" path="res://scenes/canvas_layer.gd" id="10_njjn1"]
 [ext_resource type="PackedScene" uid="uid://ca5818atcrj7w" path="res://scenes/inventory_gui.tscn" id="11_7hiv5"]
+[ext_resource type="PackedScene" uid="uid://nnmg3dvq6uql" path="res://scenes/hotbar.tscn" id="14_ok05f"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hd5ey"]
 texture = ExtResource("2_qeo4h")
@@ -1041,6 +1042,19 @@ offset_right = 66.5
 offset_bottom = 41.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Hotbar" parent="CanvasLayer" instance=ExtResource("14_ok05f")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -20.0
+offset_top = -40.0
+offset_right = 20.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 0
 
 [node name="lifepot" parent="." instance=ExtResource("4_2uof0")]
 position = Vector2(82, 136)
