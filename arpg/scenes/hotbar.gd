@@ -3,7 +3,7 @@ extends HBoxContainer
 @onready var inventory: Inventory = preload("res://resources/playerInventory.tres")
 @onready var slots: Array = get_children()
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
 	update() 
 	inventory.updated.connect(update)
 

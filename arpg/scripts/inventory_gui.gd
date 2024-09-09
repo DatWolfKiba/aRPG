@@ -9,6 +9,7 @@ var isOpen: bool = false
 @onready var ItemStackGuiClass = preload("res://scenes/itemStackGui.tscn")
 @onready var hotbar_slots: Array = $NinePatchRect/HBoxContainer.get_children()
 @onready var slots: Array = hotbar_slots + $NinePatchRect/GridContainer.get_children() 
+@onready var h_bar = get_parent().get_child(-1)
 
 var itemInHand: ItemStackGui
 var oldIndex: int = -1
@@ -97,7 +98,7 @@ func stackItems(slot):
 	else:
 		slotItem.inventorySlot.amount = maxAmount
 		itemInHand.inventorySlot.amount = totalAmount - maxAmount
-		
+	h_bar.update()	
 	slotItem.update()
 	
 	if itemInHand: itemInHand.update()
