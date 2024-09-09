@@ -1,27 +1,33 @@
-[gd_resource type="Resource" script_class="Inventory" load_steps=18 format=3 uid="uid://dcbihyimpqo8u"]
+[gd_resource type="Resource" script_class="Inventory" load_steps=19 format=3 uid="uid://dcbihyimpqo8u"]
 
 [ext_resource type="Script" path="res://scripts/inventory.gd" id="2_is2rv"]
 [ext_resource type="Script" path="res://resources/inventory_slot.gd" id="2_ytci6"]
+[ext_resource type="Resource" uid="uid://b53su12nti4u3" path="res://resources/lifepot.tres" id="3_rtfd2"]
 
-[sub_resource type="Resource" id="Resource_2afyq"]
+[sub_resource type="Resource" id="Resource_a888x"]
 script = ExtResource("2_ytci6")
-amount = 0
+item = ExtResource("3_rtfd2")
+amount = 4
 
-[sub_resource type="Resource" id="Resource_6bv1y"]
+[sub_resource type="Resource" id="Resource_a0oi3"]
 script = ExtResource("2_ytci6")
-amount = 0
+item = ExtResource("3_rtfd2")
+amount = 4
 
-[sub_resource type="Resource" id="Resource_x5cyw"]
+[sub_resource type="Resource" id="Resource_qkg6t"]
 script = ExtResource("2_ytci6")
-amount = 0
+item = ExtResource("3_rtfd2")
+amount = 2
 
 [sub_resource type="Resource" id="Resource_l757u"]
 script = ExtResource("2_ytci6")
-amount = 0
+item = ExtResource("3_rtfd2")
+amount = 5
 
 [sub_resource type="Resource" id="Resource_wh217"]
 script = ExtResource("2_ytci6")
-amount = 0
+item = ExtResource("3_rtfd2")
+amount = 8
 
 [sub_resource type="Resource" id="Resource_2rkmg"]
 script = ExtResource("2_ytci6")
@@ -65,4 +71,4 @@ amount = 0
 
 [resource]
 script = ExtResource("2_is2rv")
-slots = Array[ExtResource("2_ytci6")]([SubResource("Resource_2afyq"), SubResource("Resource_6bv1y"), SubResource("Resource_x5cyw"), SubResource("Resource_l757u"), SubResource("Resource_wh217"), SubResource("Resource_2rkmg"), SubResource("Resource_aonuy"), SubResource("Resource_5b8ig"), SubResource("Resource_o0vw2"), SubResource("Resource_vjihb"), SubResource("Resource_npjfw"), SubResource("Resource_ofayt"), SubResource("Resource_y57fa"), SubResource("Resource_ak7vu"), SubResource("Resource_y37b2")])
+slots = Array[ExtResource("2_ytci6")]([SubResource("Resource_a888x"), SubResource("Resource_a0oi3"), SubResource("Resource_qkg6t"), SubResource("Resource_l757u"), SubResource("Resource_wh217"), SubResource("Resource_2rkmg"), SubResource("Resource_aonuy"), SubResource("Resource_5b8ig"), SubResource("Resource_o0vw2"), SubResource("Resource_vjihb"), SubResource("Resource_npjfw"), SubResource("Resource_ofayt"), SubResource("Resource_y57fa"), SubResource("Resource_ak7vu"), SubResource("Resource_y37b2")])
