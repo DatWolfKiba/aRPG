@@ -10,6 +10,8 @@ var isOpen: bool = false
 @onready var slots: Array = $NinePatchRect/GridContainer.get_children() 
 
 var itemInHand: ItemStackGui
+var oldIndex: int = -1
+
 
 func _ready():
 	connectSlots()
@@ -88,6 +90,8 @@ func stackItems(slot):
 		slotItem.inventorySlot.amount = totalAmount
 		remove_child(itemInHand)
 		itemInHand = null
+		oldIndex = -1
+		
 		
 	else:
 		slotItem.inventorySlot.amount = maxAmount
@@ -99,9 +103,12 @@ func stackItems(slot):
 				
 
 func takeItemFromSlot(slot):
+	
 	itemInHand = slot.takeItem()
 	add_child(itemInHand)
 	updateIteamInHand()	
+	
+	oldIndex = slot.index 
 	
 func insertItemInSlot(slot):
 	var item = itemInHand
@@ -110,6 +117,7 @@ func insertItemInSlot(slot):
 	itemInHand = null
 	
 	slot.insert(item)
+	oldIndex = -1
 	
 	
 func updateIteamInHand():
@@ -117,5 +125,18 @@ func updateIteamInHand():
 	itemInHand.global_position = get_global_mouse_position() - itemInHand.size / 2
 	
 	
+func putItemBack():
+	if oldIndex < 0:
+		var emptySlots = slots.filter(func (s): return s.isEmpty())
+		if emptySlots.is_empty(): return
+		
+		oldIndex = emptySlots[0].index
+		
+	var targetSlot = slots[oldIndex]
+	insertItemInSlot(targetSlot)
+	
+	
 func _input(_event):
+	if itemInHand && Input.is_action_pressed("rightClick"):
+		putItemBack()
 	updateIteamInHand()	
