@@ -1,9 +1,12 @@
-extends Node2D
+extends BaseScene
 
 @onready var heartContainer = $CanvasLayer/heartContainer
-@onready var player = $Player
+@onready var camera = $follow_cam
 
-func _ready() -> void:
+func _ready():
+	super()
+	camera.follow_node = player
+	
 	heartContainer.setMaxHearts(player.maxHealth)
 	heartContainer.updateHearts(player.currentHealth)
 	player.healthChanged.connect(heartContainer.updateHearts)

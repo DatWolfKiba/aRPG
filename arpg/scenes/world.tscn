@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bjoqbi78yj3de"]
+[gd_scene load_steps=24 format=3 uid="uid://bjoqbi78yj3de"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_ayfvn"]
 [ext_resource type="PackedScene" uid="uid://b3b6l7wvj3qbu" path="res://scenes/player.tscn" id="1_kkn4c"]
@@ -8,12 +8,14 @@
 [ext_resource type="Texture2D" uid="uid://b5tggb1wekx22" path="res://assets/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="4_mmie7"]
 [ext_resource type="PackedScene" uid="uid://bahfdaluh36jk" path="res://scenes/stick.tscn" id="5_4sluo"]
 [ext_resource type="PackedScene" uid="uid://d1vemkscbl511" path="res://scenes/enemies/raccoon.tscn" id="5_k5uxi"]
+[ext_resource type="Texture2D" uid="uid://do1ohfeoeh28d" path="res://assets/Backgrounds/Tilesets/TilesetHouse.png" id="6_ofot3"]
 [ext_resource type="PackedScene" uid="uid://4pgic3pcumop" path="res://scenes/heart_container.tscn" id="6_p7vgu"]
 [ext_resource type="Script" path="res://scripts/follow_cam.gd" id="6_vp1g3"]
 [ext_resource type="Resource" uid="uid://dcbihyimpqo8u" path="res://resources/playerInventory.tres" id="9_1iyic"]
 [ext_resource type="Script" path="res://scenes/canvas_layer.gd" id="10_njjn1"]
 [ext_resource type="PackedScene" uid="uid://ca5818atcrj7w" path="res://scenes/inventory_gui.tscn" id="11_7hiv5"]
 [ext_resource type="PackedScene" uid="uid://nnmg3dvq6uql" path="res://scenes/hotbar.tscn" id="14_ok05f"]
+[ext_resource type="PackedScene" uid="uid://bwpvi6ipi13hl" path="res://scenes/scene_trigger.tscn" id="16_bnm0g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hd5ey"]
 texture = ExtResource("2_qeo4h")
@@ -967,6 +969,13 @@ resource_name = "Collectables"
 scenes/5/scene = ExtResource("4_2uof0")
 scenes/7/scene = ExtResource("5_4sluo")
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_l51es"]
+texture = ExtResource("6_ofot3")
+0:0/size_in_atlas = Vector2i(4, 3)
+0:0/0 = 0
+0:0/0/y_sort_origin = 24
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-15.25, 23.375, -15.125, 9.75, -0.75, 10, -0.625, 24, 26.6933, 23.3345, 30.052, 18.9151, 31.4663, -12.1976, -31.2895, -11.1369, -30.4056, 18.3848, -26.3397, 22.8042)
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6l5gk"]
 texture = ExtResource("4_mmie7")
 0:0/animation_frame_0/duration = 0.4
@@ -988,10 +997,19 @@ sources/0 = SubResource("TileSetAtlasSource_hd5ey")
 sources/1 = SubResource("TileSetAtlasSource_12x7n")
 sources/4 = SubResource("TileSetAtlasSource_6l5gk")
 sources/2 = SubResource("TileSetScenesCollectionSource_4al1b")
+sources/3 = SubResource("TileSetAtlasSource_l51es")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a5tw1"]
+size = Vector2(14, 7.5)
 
 [node name="World" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_ayfvn")
+
+[node name="follow_cam" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap", "follow_node")]
+script = ExtResource("6_vp1g3")
+tilemap = NodePath("../TileMap")
+follow_node = NodePath("../Player")
 
 [node name="TileMap" type="TileMap" parent="."]
 y_sort_enabled = true
@@ -1008,6 +1026,10 @@ layer_2/z_index = 1
 layer_2/tile_data = PackedInt32Array(65547, 1, 0, 196619, 1, 0, 327691, 1, 0, 458763, 1, 0)
 layer_3/name = "collectables"
 layer_3/tile_data = PackedInt32Array(458759, 2, 327680, 458758, 2, 327680, 524294, 2, 327680, 524295, 2, 327680, 327685, 2, 458752)
+layer_4/name = "buildings"
+layer_4/y_sort_enabled = true
+layer_4/z_index = 1
+layer_4/tile_data = PackedInt32Array(28, 3, 0)
 
 [node name="raccoon" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("5_k5uxi")]
 position = Vector2(123, 29)
@@ -1017,11 +1039,8 @@ endPoint = NodePath("Marker2D")
 position = Vector2(-28, 48)
 
 [node name="Player" parent="." instance=ExtResource("1_kkn4c")]
+position = Vector2(453, 89)
 inventory = ExtResource("9_1iyic")
-
-[node name="followCam" type="Camera2D" parent="Player" node_paths=PackedStringArray("tilemap")]
-script = ExtResource("6_vp1g3")
-tilemap = NodePath("../../TileMap")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -1091,6 +1110,20 @@ position = Vector2(165, 136)
 
 [node name="lifepot12" parent="." instance=ExtResource("4_2uof0")]
 position = Vector2(230, 105)
+
+[node name="SceneTrigger" parent="." instance=ExtResource("16_bnm0g")]
+position = Vector2(448, 25)
+connected_scene = "inside_house"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SceneTrigger"]
+z_index = 1
+position = Vector2(0, 2.75)
+shape = SubResource("RectangleShape2D_a5tw1")
+
+[node name="EnteranceMarkers" type="Node2D" parent="."]
+
+[node name="InsideHouse" type="Marker2D" parent="EnteranceMarkers"]
+position = Vector2(447, 42)
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_opened"]
