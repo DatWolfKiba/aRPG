@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="HealthIteam" load_steps=3 format=3 uid="uid://b53su12nti4u3"]
 
-[ext_resource type="Script" path="res://resources/health_item.gd" id="1_en1v4"]
+[ext_resource type="Script" path="res://scripts/health_item.gd" id="1_en1v4"]
 [ext_resource type="Texture2D" uid="uid://bot17he5r4a7w" path="res://assets/Items/Potion/LifePot.png" id="2_b3svj"]
 
 [resource]

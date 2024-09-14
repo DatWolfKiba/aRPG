@@ -4,3 +4,6 @@ class_name HealthIteam extends InventoryItem
 
 func use(player: Player) -> void:
 	player.increase_health(health_increase)
+
+func can_be_used(player: Player) -> bool:
+	return player.currentHealth < player.maxHealth
