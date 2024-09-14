@@ -6,3 +6,6 @@ class_name InventoryItem
 @export var texture: Texture2D  
 @export var stackSize: int = 10
 @export var maxAmountPrStack: int = 10
+
+func use(player: Player) -> void:
+	pass
