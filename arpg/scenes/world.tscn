@@ -1,7 +1,8 @@
-[gd_scene load_steps=24 format=3 uid="uid://bjoqbi78yj3de"]
+[gd_scene load_steps=25 format=3 uid="uid://bjoqbi78yj3de"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_ayfvn"]
 [ext_resource type="PackedScene" uid="uid://b3b6l7wvj3qbu" path="res://scenes/player.tscn" id="1_kkn4c"]
+[ext_resource type="PackedScene" uid="uid://brahpgbypk67f" path="res://scenes/pause_menu.tscn" id="2_3qh03"]
 [ext_resource type="Texture2D" uid="uid://dfhv4ese1fqxo" path="res://assets/Backgrounds/Tilesets/TilesetFloor.png" id="2_qeo4h"]
 [ext_resource type="Texture2D" uid="uid://d2t1oc7eg0h0v" path="res://assets/Backgrounds/Tilesets/TilesetNature.png" id="3_kk7jp"]
 [ext_resource type="PackedScene" uid="uid://0veoy2kygnvg" path="res://scenes/lifepot.tscn" id="4_2uof0"]
@@ -1046,6 +1047,11 @@ inventory = ExtResource("9_1iyic")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 process_mode = 3
 script = ExtResource("10_njjn1")
+
+[node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_3qh03")]
+visible = false
+offset_left = 3.0
+offset_right = 3.0
 
 [node name="heartContainer" parent="CanvasLayer" instance=ExtResource("6_p7vgu")]
 metadata/_edit_use_anchors_ = true
