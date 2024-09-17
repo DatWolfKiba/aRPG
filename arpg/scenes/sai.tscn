@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://u3kum6il8hrn"]
+
+[ext_resource type="Script" path="res://scenes/sai.gd" id="1_1427m"]
+[ext_resource type="Texture2D" uid="uid://bktbevgmrfadr" path="res://assets/Items/Weapons/Sai/SpriteInHand.png" id="2_6ekfh"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ry43"]
+size = Vector2(4, 8)
+
+[node name="Sai" type="Area2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_1427m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -6)
+texture = ExtResource("2_6ekfh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_8ry43")
