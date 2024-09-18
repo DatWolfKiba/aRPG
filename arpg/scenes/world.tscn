@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bjoqbi78yj3de"]
+[gd_scene load_steps=26 format=3 uid="uid://bjoqbi78yj3de"]
 
 [ext_resource type="Script" path="res://scripts/world.gd" id="1_ayfvn"]
 [ext_resource type="PackedScene" uid="uid://b3b6l7wvj3qbu" path="res://scenes/player.tscn" id="1_kkn4c"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://ca5818atcrj7w" path="res://scenes/inventory_gui.tscn" id="11_7hiv5"]
 [ext_resource type="PackedScene" uid="uid://nnmg3dvq6uql" path="res://scenes/hotbar.tscn" id="14_ok05f"]
 [ext_resource type="PackedScene" uid="uid://bwpvi6ipi13hl" path="res://scenes/scene_trigger.tscn" id="16_bnm0g"]
+[ext_resource type="Script" path="res://scripts/saver_loader.gd" id="18_l5tem"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hd5ey"]
 texture = ExtResource("2_qeo4h")
@@ -1050,6 +1051,7 @@ script = ExtResource("10_njjn1")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("2_3qh03")]
 visible = false
+z_index = 6
 offset_left = 3.0
 offset_right = 3.0
 
@@ -1131,6 +1133,11 @@ shape = SubResource("RectangleShape2D_a5tw1")
 
 [node name="InsideHouse" type="Marker2D" parent="EnteranceMarkers"]
 position = Vector2(447, 42)
+
+[node name="Utilities" type="Node" parent="."]
+
+[node name="SaverLoader" type="Node" parent="Utilities"]
+script = ExtResource("18_l5tem")
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_opened"]
