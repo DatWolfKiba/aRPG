@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://u3kum6il8hrn"]
 
-[ext_resource type="Script" path="res://scenes/sai.gd" id="1_1427m"]
+[ext_resource type="Script" path="res://scripts/sai.gd" id="1_1427m"]
 [ext_resource type="Texture2D" uid="uid://bktbevgmrfadr" path="res://assets/Items/Weapons/Sai/SpriteInHand.png" id="2_6ekfh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ry43"]

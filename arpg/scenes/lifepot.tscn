@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://jsxv5dd4plru" path="res://scenes/collectable.tscn" id="1_t3txm"]
 [ext_resource type="Texture2D" uid="uid://bot17he5r4a7w" path="res://assets/Items/Potion/LifePot.png" id="2_q8yu3"]
-[ext_resource type="Script" path="res://scenes/lifepot.gd" id="2_qq1yn"]
+[ext_resource type="Script" path="res://scripts/lifepot.gd" id="2_qq1yn"]
 [ext_resource type="Resource" uid="uid://b53su12nti4u3" path="res://resources/lifepot.tres" id="3_fmh80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nv2aa"]

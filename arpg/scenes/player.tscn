@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jxjcj"]
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="3_0tu0i"]
 [ext_resource type="PackedScene" uid="uid://u3kum6il8hrn" path="res://scenes/sai.tscn" id="4_18y66"]
-[ext_resource type="Script" path="res://scenes/sai.gd" id="5_4ks3g"]
+[ext_resource type="Script" path="res://scripts/sai.gd" id="5_4ks3g"]
 
 [sub_resource type="Animation" id="Animation_cuyos"]
 length = 0.001
