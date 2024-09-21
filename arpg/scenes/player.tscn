@@ -1,10 +1,9 @@
-[gd_scene load_steps=21 format=3 uid="uid://b3b6l7wvj3qbu"]
+[gd_scene load_steps=20 format=3 uid="uid://b3b6l7wvj3qbu"]
 
 [ext_resource type="Texture2D" uid="uid://ci2mx1p5c2hs4" path="res://assets/Actor/Characters/NinjaDark/SpriteSheet.png" id="1_j31al"]
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_jxjcj"]
 [ext_resource type="Script" path="res://scripts/weapon.gd" id="3_0tu0i"]
 [ext_resource type="PackedScene" uid="uid://u3kum6il8hrn" path="res://scenes/sai.tscn" id="4_18y66"]
-[ext_resource type="Script" path="res://scripts/sai.gd" id="5_4ks3g"]
 
 [sub_resource type="Animation" id="Animation_cuyos"]
 length = 0.001
@@ -453,7 +452,6 @@ libraries = {
 [node name="hurtTimer" type="Timer" parent="."]
 
 [node name="weapon" type="Node2D" parent="."]
-z_index = 1
 position = Vector2(6, -1)
 rotation = 2.0944
 script = ExtResource("3_0tu0i")
@@ -461,7 +459,6 @@ script = ExtResource("3_0tu0i")
 [node name="sai" parent="weapon" instance=ExtResource("4_18y66")]
 position = Vector2(13.5263, 1.42814)
 rotation = 4.19025
-script = ExtResource("5_4ks3g")
 
 [connection signal="area_entered" from="hurtBox" to="." method="_on_hurt_box_area_entered"]
 [connection signal="area_exited" from="hurtBox" to="." method="_on_hurt_box_area_exited"]
