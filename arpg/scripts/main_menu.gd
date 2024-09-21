@@ -22,5 +22,6 @@ func _on_load_pressed() -> void:
 	
 	if saverLoader != null:
 		saverLoader.load_game()
+		queue_free() 
 	else:
 		print("SaverLoader not found!")
