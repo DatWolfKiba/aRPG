@@ -8,7 +8,7 @@ signal healthChanged
 @onready var animations: AnimationPlayer = $AnimationPlayer
 
 @export var maxHealth = 3
-@onready var currentHealth: int = maxHealth
+@export var currentHealth: int = maxHealth
 @export var knockbackPower: int = 500 
 @onready var effects = $Effects
 @onready var hurtTimer: Timer = $hurtTimer
