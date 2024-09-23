@@ -1,25 +1,86 @@
 extends CharacterBody2D
 
+@export var detection_radius: float = 50.0  # Adjustable detection radius for player
+@export var charge_time: float = 1.0  # Adjustable time for the charge state
+@export var health: int = 1  # Adjustable boss health
+@onready var player: Node2D = get_tree().get_root().get_node("World/Player")
+@onready var animations: AnimationPlayer = $AnimationPlayer
+@onready var attack_timer: Timer = $AttackTimer
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+var is_dead: bool = false
+var state: State = State.IDLE
 
+enum State {
+	IDLE,
+	CHARGE,
+	ATTACK,
+}
+
+func _ready() -> void:
+	attack_timer.one_shot = true
+	attack_timer.wait_time = charge_time
+	# Properly connect the animation_finished signal
+	animations.connect("animation_finished", Callable(self, "_on_animation_finished"))
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
-	if not is_on_floor():
-		velocity += get_gravity() * delta
+	if is_dead:
+		return
+	
+	var distance_to_player = global_position.distance_to(player.global_position)
 
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	match state:
+		State.IDLE:
+			if distance_to_player < detection_radius:
+				enter_charge_state()
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction := Input.get_axis("ui_left", "ui_right")
-	if direction:
-		velocity.x = direction * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		State.CHARGE:
+			if attack_timer.time_left == 0:
+				enter_attack_state()
 
-	move_and_slide()
+		State.ATTACK:
+			if distance_to_player >= detection_radius:
+				state = State.IDLE
+				animations.play("idle")
+
+	update_animation()
+
+func enter_charge_state() -> void:
+	state = State.CHARGE
+	animations.play("charge")
+	attack_timer.start()
+
+func enter_attack_state() -> void:
+	state = State.ATTACK
+	animations.play("attack")
+
+func update_animation() -> void:
+	if is_dead:
+		return
+	if animations.is_playing() == false:
+		animations.play("idle")
+
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	if area.name == "Player":
+		print("Player hit by boss!")  # Optional debug print
+
+func _on_hit_box_area_entered(area: Area2D) -> void:
+	print("Boss hitbox area entered")
+	if area.name == "hurtBox":
+		print("Player hurtbox entered boss hitbox area!")
+		take_damage()
+
+
+
+func take_damage() -> void:
+	health -= 1
+	if health <= 0:
+		die()
+
+func die() -> void:
+	is_dead = true
+	animations.play("death")
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "death":
+		queue_free()
