@@ -1009,6 +1009,11 @@ size = Vector2(14, 7.5)
 y_sort_enabled = true
 script = ExtResource("1_ayfvn")
 
+[node name="raccoon" parent="." instance=ExtResource("5_k5uxi")]
+position = Vector2(123, 29)
+speed = 10.0
+idle_distance = 5.0
+
 [node name="follow_cam" type="Camera2D" parent="." node_paths=PackedStringArray("tilemap", "follow_node")]
 script = ExtResource("6_vp1g3")
 tilemap = NodePath("../TileMap")
@@ -1033,13 +1038,6 @@ layer_4/name = "buildings"
 layer_4/y_sort_enabled = true
 layer_4/z_index = 1
 layer_4/tile_data = PackedInt32Array(28, 3, 0)
-
-[node name="raccoon" parent="TileMap" node_paths=PackedStringArray("endPoint") instance=ExtResource("5_k5uxi")]
-position = Vector2(123, 29)
-endPoint = NodePath("Marker2D")
-
-[node name="Marker2D" type="Marker2D" parent="TileMap/raccoon"]
-position = Vector2(-28, 48)
 
 [node name="Player" parent="." instance=ExtResource("1_kkn4c")]
 position = Vector2(307, 82)
