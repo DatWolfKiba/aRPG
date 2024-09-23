@@ -7,7 +7,7 @@
 size = Vector2(4, 8)
 
 [node name="Sai" type="Area2D"]
-collision_layer = 4
+collision_layer = 15
 collision_mask = 0
 script = ExtResource("1_1427m")
 
@@ -18,3 +18,5 @@ texture = ExtResource("2_6ekfh")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -6)
 shape = SubResource("RectangleShape2D_8ry43")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

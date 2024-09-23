@@ -231,7 +231,6 @@ _data = {
 size = Vector2(15, 10)
 
 [node name="raccoon" type="CharacterBody2D"]
-z_index = 1
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_56a3j")
