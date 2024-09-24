@@ -4,7 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://b3b6l7wvj3qbu" path="res://scenes/player.tscn" id="1_kkn4c"]
 [ext_resource type="PackedScene" uid="uid://brahpgbypk67f" path="res://scenes/pause_menu.tscn" id="2_3qh03"]
 [ext_resource type="Texture2D" uid="uid://dfhv4ese1fqxo" path="res://assets/Backgrounds/Tilesets/TilesetFloor.png" id="2_qeo4h"]
-[ext_resource type="PackedScene" uid="uid://cobpy5uvkned3" path="res://scenes/boss.tscn" id="2_xm73k"]
 [ext_resource type="Texture2D" uid="uid://d2t1oc7eg0h0v" path="res://assets/Backgrounds/Tilesets/TilesetNature.png" id="3_kk7jp"]
 [ext_resource type="PackedScene" uid="uid://0veoy2kygnvg" path="res://scenes/lifepot.tscn" id="4_2uof0"]
 [ext_resource type="Texture2D" uid="uid://b5tggb1wekx22" path="res://assets/Backgrounds/Animated/Plant/SpriteSheet16x16.png" id="4_mmie7"]
@@ -19,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://nnmg3dvq6uql" path="res://scenes/hotbar.tscn" id="14_ok05f"]
 [ext_resource type="PackedScene" uid="uid://bwpvi6ipi13hl" path="res://scenes/scene_trigger.tscn" id="16_bnm0g"]
 [ext_resource type="Script" path="res://scripts/saver_loader.gd" id="18_l5tem"]
+[ext_resource type="PackedScene" uid="uid://dpor64ww6evbi" path="res://scenes/enemies/lizard.tscn" id="19_ern4k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hd5ey"]
 texture = ExtResource("2_qeo4h")
@@ -1010,9 +1010,6 @@ size = Vector2(14, 7.5)
 y_sort_enabled = true
 script = ExtResource("1_ayfvn")
 
-[node name="boss" parent="." instance=ExtResource("2_xm73k")]
-position = Vector2(321, 28)
-
 [node name="raccoon" parent="." instance=ExtResource("5_k5uxi")]
 position = Vector2(123, 29)
 speed = 10.0
@@ -1140,6 +1137,9 @@ position = Vector2(447, 42)
 
 [node name="SaverLoader" type="Node" parent="Utilities"]
 script = ExtResource("18_l5tem")
+
+[node name="lizard" parent="." instance=ExtResource("19_ern4k")]
+position = Vector2(347, 42)
 
 [connection signal="closed" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_closed"]
 [connection signal="opened" from="CanvasLayer/InventoryGui" to="." method="_on_inventory_gui_opened"]
