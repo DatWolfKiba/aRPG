@@ -24,7 +24,6 @@ var isHurt: bool = false
 
 var isAttacking: bool = false 
 
-
 func _ready():
 	inventory.use_item.connect(use_item)
 	effects.play("RESET")
@@ -45,8 +44,6 @@ func attack():
 	weapon.disable()
 	isAttacking = false
 		
-	
-
 func updateAnimation():
 	if isAttacking: return
 	
@@ -77,8 +74,10 @@ func _physics_process(delta):
 	
 func hurtByEnemy(area):
 	currentHealth -= 1
-	if currentHealth == 0:
-		currentHealth = maxHealth
+	if currentHealth <= 0:
+		# Change the scene to main menu when the player dies
+		get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
+		return  # Exit the function to prevent further execution
 	healthChanged.emit(currentHealth)
 	isHurt = true
 	
@@ -89,20 +88,17 @@ func hurtByEnemy(area):
 	effects.play("RESET")
 	isHurt = false
 
-		
 func _on_hurt_box_area_entered(area):
 	if area.has_method("collect"):
 		area.collect(inventory)
-		
 		
 func knockback(enemyVelocity: Vector2):
 	var knockbackDirection = (enemyVelocity - velocity).normalized() * knockbackPower
 	velocity = knockbackDirection
 	move_and_slide()	
 
-
 func _on_hurt_box_area_exited(area: Area2D) -> void:
-	pass# Replace with function body.
+	pass
 
 func increase_health(amount: int) -> void:
 	currentHealth += amount
